@@ -1,0 +1,19 @@
+.input-component {
+    margin: 1.5rem 0rem;
+    min-width: 350px;
+
+    input {
+        width: 100%;
+        background: transparent;
+        border: 1px solid #3f7fe9;
+        font-size: 20px;
+        line-height: 20px;
+        padding: 8px 16px;
+        border-radius: 5px;
+
+        &:focus {
+            background: transparent;
+            outline: 1px solid #3f7fe9;;
+        }
+    }
+}

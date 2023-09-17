@@ -1,0 +1,36 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
+
+// set up express
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use(express.static('static'));
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
+
+// set up mongoose
+
+mongoose.connect(
+ //  "mongodb://localhost:27017/michele_google_map_db",
+"mongodb://doadmin@Jg6b280hEY4r59l3:michele-google-map-db-86d40752.mongo.ondigitalocean.com
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+  (err) => {
+    if (err) throw err;
+    console.log("MongoDB connection established");
+  }
+);
+
+// set up routes
+
+app.use("/users", require("./routes/userRouter"));
+app.use("/excels", require("./routes/excelRouter"));
