@@ -72,7 +72,8 @@ const processPDF = (req, res) => {
       const pdfText = pdf.text;
 
       res.send({
-        text: pdfText.split(/[\.\?!]\s+/)
+        text: pdfText.split(/[\.\?!]\s+/),
+        wholeText: pdfText
       })
     });
   });
@@ -80,4 +81,5 @@ const processPDF = (req, res) => {
 
 app.use("/users", require("./routes/userRouter"));
 app.use("/upload", router.post("/", obj));
-app.use("/processPDF", processPDF);
+// app.use("/processPDF", processPDF);
+app.use("/processPDF", require("./routes/pdfRouter"));

@@ -29,7 +29,16 @@ const routes = [
         component: loadable(() => import('./../pages/Signin'), {
             fallback: <Loading />
         })
-    }
+    },
+    {
+        path: '/read/:id',
+        key: 'ROOT',
+        layout: 'Layout3', // The topped Layout Name
+        exact: true,
+        component: loadable(() => import('../pages/Read'), {
+            fallback: <Loading />
+        })
+    },
 ];
 
 export default routes;
