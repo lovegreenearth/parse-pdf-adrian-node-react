@@ -56,7 +56,8 @@ class Ticket extends Component {
     copyLink() {
         // Create a temporary input element
         const input = document.createElement('input');
-        input.setAttribute('value', 'http://localhost:3000/read/' + this.state.selected);
+        // input.setAttribute('value', 'http://localhost:3000/read/' + this.state.selected);
+        input.setAttribute('value', 'http://81.181.160.210/read/' + this.state.selected);
         document.body.appendChild(input);
 
         // Select and copy the link
