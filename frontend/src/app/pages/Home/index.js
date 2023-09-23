@@ -14,15 +14,13 @@ class Home extends Component {
             id: null,
             bookRef: '',
             copied: false,
-            send: false,
-            email: ''
+            send: false
         }
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
         this.proccess = this.proccess.bind(this);
         this.refresh = this.refresh.bind(this);
         this.copyLink = this.copyLink.bind(this);
-        this.changeEmail = this.changeEmail.bind(this);
     }
 
     componentDidMount() {
@@ -90,31 +88,6 @@ class Home extends Component {
         })
     }
 
-    changeEmail(e) {
-        this.setState({
-            email: e.target.value
-        })
-    }
-
-    sendEmail() {
-        if(this.state.email != '' && this.state.email.toLowerCase().match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )) {
-            axios.post(contant.BACKEND_URL + "/processPDF/sendEmail", { 
-                id: this.state.id,
-                email: this.state.email
-            })
-                .then((response) => {
-                    this.setState({
-                        send: true
-                    })
-                }).catch((error) => {
-                });
-        }else{
-            alert("Please input valid email.")
-        }
-    }
-
     render() {
         return (
             <>
@@ -159,14 +132,6 @@ class Home extends Component {
                     }
                     {
                         this.state.text != '' && <div className='actions'>
-                            <div>
-                                <input value={this.state.email} onChange={e => this.changeEmail(e)} />
-                                <button className="copy-button" onClick={() => this.sendEmail()}>
-                                    {
-                                        this.state.send ? 'Sent' : 'Send'
-                                    }
-                                </button>
-                            </div>
                             <div>
                                 <button className="copy-button" onClick={() => this.copyLink()}>
                                     {

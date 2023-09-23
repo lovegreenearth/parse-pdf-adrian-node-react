@@ -44,7 +44,10 @@ const Header = () => {
                         </h1>
                     </div>
                     <div className='user-mode'>
-                        <Link to={'/'} className='contact-us'>
+                        <Link to={'/tickets'} className='contact-us auth-link'>
+                            Ticket
+                        </Link>
+                        <Link to={'/'} className='contact-us auth-link'>
                             Home
                         </Link>
                         <div className='auth-link'>

@@ -91,6 +91,10 @@ body {
         justify-content: center;
     }
 
+    .print-page {
+        margin-top: 50px !important;
+    }
+
     .home-page {
         margin: 0 auto;
         margin-top: 0px;
@@ -117,6 +121,20 @@ body {
                 &:hover {
                     cursor: pointer;
                 }
+            }
+        }
+
+        .print-button {
+            background-color: #4262ff;
+            color: #fff;
+            padding: 4px 24px;
+            border: 1px solid #4262ff;
+            border-radius: 5px;
+            font-size: 24px;
+            margin: 0 10px;
+
+            &:hover {
+                cursor: pointer;
             }
         }
 

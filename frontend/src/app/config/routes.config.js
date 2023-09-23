@@ -13,6 +13,15 @@ const routes = [
         })
     },
     {
+        path: '/tickets',
+        key: 'ROOT',
+        layout: 'Layout2', // The topped Layout Name
+        exact: true,
+        component: loadable(() => import('../pages/Ticket'), {
+            fallback: <Loading />
+        })
+    },
+    {
         path: '/signup',
         key: 'ROOT',
         layout: 'Layout1', // The topped Layout Name

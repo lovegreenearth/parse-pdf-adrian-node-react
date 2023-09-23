@@ -167,6 +167,18 @@ router.post("/read", async (req, res) => {
     }
 });
 
+router.post("/readAll", async (req, res) => {
+    try {
+        const pdf = await Pdf.find({  });
+        if (pdf)
+            return res
+                .status(200)
+                .json(pdf);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 router.post("/sendEmail", async (req, res) => {
     try {
         const pdf = await Pdf.findOne({ _id: req.body.id });
@@ -174,8 +186,8 @@ router.post("/sendEmail", async (req, res) => {
             var mailOptions = {
                 from: 'office@mayatravel.ro',
                 to: req.body.email,
-                subject: 'Sending Email From Maya Travel',
-                text: ''
+                subject: 'Sending Email From Maya Travel - ' + pdf.bookRef,
+                text: pdf.content
             };
 
             transporter.sendMail(mailOptions, function (error, info) {
