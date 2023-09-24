@@ -31,6 +31,10 @@ class Home extends Component {
     }
 
     onFormSubmit() {
+        if(!this.state.file) {
+            alert("Please select a file");
+            return;
+        }
         const formData = new FormData();
         formData.append('pdf', this.state.file);
         const config = {
